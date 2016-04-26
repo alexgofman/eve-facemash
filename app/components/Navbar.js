@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import NavbarStore from '../stores/NavbarStore';
 import NavbarActions from '../actions/NavbarActions';
+let io = require('socket.io');
 
 class Navbar extends React.Component {
   constructor(props) {
