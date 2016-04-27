@@ -4,7 +4,7 @@ class AddCharacterActions {
   constructor() {
     this.generateActions(
       'addCharacterSuccess',
-      'AddCharacterFail',
+      'addCharacterFail',
       'updateName',
       'updateGender',
       'invalidName',

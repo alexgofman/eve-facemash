@@ -25,11 +25,11 @@ class AddCharacter extends React.Component {
     event.preventDefault();
 
     var name = this.state.name.trim();
-    var gender = this.state.gender();
+    var gender = this.state.gender;
 
     if (!name) {
       AddCharacterActions.invalidName();
-      this.refs.nameTextField.getDOMNode().focus();
+      this.refs.nameTextField.focus();
     }
 
     if (!gender) {
@@ -50,7 +50,7 @@ class AddCharacter extends React.Component {
               <div className='panel-heading'>Add Character</div>
               <div className='panel-body'>
                 <form onSubmit={this.handleSubmit.bind(this)}>
-                 <div className={'form-group ' + this.state.nameValidationState}>
+                  <div className={'form-group ' + this.state.nameValidationState}>
                     <label className='control-label'>Character Name</label>
                     <input type='text' className='form-control' ref='nameTextField' value={this.state.name}
                            onChange={AddCharacterActions.updateName} autoFocus/>
@@ -68,7 +68,7 @@ class AddCharacter extends React.Component {
                       <label htmlFor='male'>Male</label>
                     </div>
                   </div>
-                  <button type='submit' className='btn btn-primary'>Submit</button> 
+                  <button type='submit' className='btn btn-primary'>Submit</button>
                 </form>
               </div>
             </div>
