@@ -16,7 +16,14 @@ var ReactDOM = require('react-dom/server');
 var Router = require('react-router');
 var routes = require('./app/routes');
 
+var config = require('./config');
+
 var app = express();
+
+mongoose.connect(config.database);
+mongoose.connection.on('error', function() {
+    console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?');
+});
 
 app.set('port', process.env.PORT || 3000);
 app.use(logger('dev'));
