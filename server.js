@@ -3,6 +3,10 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
+// mongodb
+var mongoose = require('mongoose');
+var Character = require('./models/character');
+
 // Babel ES6/JSX Compiler
 require('babel-register');
 
