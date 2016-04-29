@@ -221,7 +221,6 @@ app.put('/api/characters', function(req, res, next) {
 /**
  * GET /api/characters/count
  * Returns the total number of characters
- *
  */
 
 app.get('api/characters/count', function(req, res, next) {
@@ -231,6 +230,25 @@ app.get('api/characters/count', function(req, res, next) {
   });
 });
 
+
+/**
+ * GET /api/characters/search
+ * Looks up a character by name. (case-insensitive)
+ */
+
+app.get('api/characters/search', function(req, res, next) {
+  var characterName = new RegExp(req.query.name, 'i');
+
+  Character.findOne({ name: characterName }, function(err, character) {
+    if (err) return next(err);
+
+    if (!character) {
+      return res.status(404).send({ message: 'Character not found.' });
+    }
+
+    res.send(character);
+  });
+});
 
 // Reactjs code:
 
