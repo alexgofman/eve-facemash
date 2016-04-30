@@ -283,6 +283,21 @@ app.get('/api/characters/top', function(req, res, next) {
 
 });
 
+/**
+ * GET /api/characters/shame
+ * Returns 100 Lowest ranked characters
+ */
+
+app.get('/api/characters/shame', function(req, res, next) {
+  Character
+    .find()
+    .sort('-losses')
+    .limit(100)
+    .exec(function(err, characters) {
+      if (err) return next(err);
+      res.send(characters);
+    });
+});
 
 // Reactjs code:
 
